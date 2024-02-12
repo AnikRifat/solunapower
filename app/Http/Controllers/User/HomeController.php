@@ -64,6 +64,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+    
         $data['walletBalance'] = getAmount($this->user->balance);
         $data['interestBalance'] = getAmount($this->user->interest_balance);
         $data['totalDeposit'] = getAmount($this->user->funds()->whereNull('plan_id')->whereStatus(1)->sum('amount'));
@@ -172,10 +173,11 @@ class HomeController extends Controller
 
 
         $latestRegisteredUser = User::where('referral_id', $this->user->id)->latest()->first();
+       $plans =  ManagePlan::where('status', 1)->get();
 
+       $gateways = Gateway::all();
+        return view($this->theme . 'user.dashboard', $data, compact('monthly', 'latestRegisteredUser','plans','gateways'));
 
-
-        return view($this->theme . 'user.dashboard', $data, compact('monthly', 'latestRegisteredUser'));
     }
 
 

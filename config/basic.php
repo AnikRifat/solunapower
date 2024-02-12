@@ -1,6 +1,6 @@
 <?php return array (
   'site_title' => 'Hyippro',
-  'base_color' => '#ff5400',
+  'base_color' => '#446e9b',
   'base_light_color' => '#6777ef',
   'secondary_color' => '#6777ef',
   'heading_color' => '#6777ef',

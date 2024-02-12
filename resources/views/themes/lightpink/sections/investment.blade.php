@@ -1,74 +1,64 @@
 @if(isset($templates['investment'][0]) && $investment = $templates['investment'][0])
     <section class="plan_area shape3">
-        <div class="container">
-            <div class="row">
-                <div class="section_header mb-30 text-center text-sm-start">
-                    <div class="section_subtitle">@lang(@$investment->description->title)</div>
-                    <h1>@lang(@$investment->description->sub_title)</h1>
-                    <p>
-                        @lang(@$investment->description->short_details)
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="monthly" role="tabpanel" aria-labelledby="pills-home-tab"
-                         tabindex="0">
-                        <div class="container">
-                            <div class="row g-4 pt-30 justify-content-center">
-                                @foreach($plans as $k => $data)
-                                    @php
-                                        $getTime = \App\Models\ManageTime::where('time', $data->schedule)->first();
-                                    @endphp
-                                    @if($data)
-                                        <div class="col-lg-4 col-sm-6 mb-70">
-                                            <div class="cmn_box box1 shadow3">
-                                                <div class="price top-left-radius-0">@lang($data->name)</div>
-                                                <div class="image_area">
-                                                    <img src="" alt="">
-                                                </div>
-                                                <h3>{{$data->price}}</h3>
-                                                @if ($data->profit_type == 1)
-                                                    <h4>
-                                                        <span>{{getAmount($data->profit)}}{{'%'}} </span> @lang('Every') {{trans($getTime->name)}}
-                                                    </h4>
-                                                @else
-                                                    <h4><span
-                                                            class="golden-text"><small><sup>{{trans($basic->currency_symbol)}}</sup></small>{{getAmount($data->profit)}} <small
-                                                                class="small-font">@lang('Every') {{trans($getTime->name)}}</small></span>
-                                                    </h4>
-                                                @endif
-                                                <p>@lang('Capital will back') : <small><span
-                                                            class="badge-small badge bg-{{($data->is_capital_back ==1) ? 'success':'danger'}}">{{($data->is_capital_back ==1) ? trans('Yes'): trans('No')}}</span></small>
-                                                </p>
-                                                @if($data->is_lifetime == 0)
-                                                    <p> @lang('Total') {{trans($data->profit*$data->repeatable)}} {{($data->profit_type == 1) ? '%': trans($basic->currency)}}
-
-                                                        @if($data->is_capital_back == 1)
-                                                            + <span
-                                                                class="badge badge_bg2 px-2 py-1 rounded-pill">@lang('Capital')</span>
-                                                        @endif
-                                                    </p>
-                                                @else
-                                                    <p> @lang('Lifetime Earning') </p>
-                                                @endif
-
-                                                <div class="btn_area">
-                                                    <button type="button"
-                                                            class="custom_btn mt-50 top-right-radius-0 investNow"
-                                                            data-price="{{$data->price}}"
-                                                            data-resource="{{$data}}">@lang('Invest Now')</button>
-                                                </div>
+        <div class="container-fluid">
+            <div class="">
+                <ul class="list-unstyled row pt-30 justify-content-center">
+                    @foreach ($plans as $k => $data)
+                        @php
+                            $getTime = \App\Models\ManageTime::where('time', $data->schedule)->first();
+                        @endphp
+                        @if ($data)
+                            <li class="col-lg-12 col-sm-12 p-3 ">
+                                <div class="cmn_box box1 shadow3">
+                                    <div class="row">
+                                        <div class="col-md-1 col-3">
+                                            <div class="image_area">
+                                                <img src="https://app.solunapower.pro/uploads/20230727/9ffe9a1795eac5b979adbbe3309f8a49.png" alt="">
                                             </div>
                                         </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        <div class="col-md-6 col-9">
+
+                                            <div class="price top-left-radius-0">@lang($data->name) - {{ $data->repeatable }}  {{ trans($getTime->name) }}</div>
+
+                                            <p>@lang('Capital return') : <small><span
+                                                class="badge-small badge bg-{{ $data->is_capital_back == 1 ? 'success' : 'danger' }}">{{ $data->is_capital_back == 1 ? trans('Yes') : trans('No') }}</span></small>
+                                    </p>
+                                            <h>{{ $data->price }}</h>
+
+                                        </div>
+                                        <div class="col-md-5 col-12" style="
+                                        text-align: right;
+                                    ">
+                                            @if ($data->profit_type == 1)
+                                                <p>
+                                                    <span>{{ getAmount($data->profit) }}{{ '%' }}
+                                                    </span> @lang('/')
+                                                    {{ trans($getTime->name) }}
+                                                </p>
+                                            @else
+                                                <p><span
+                                                        class="golden-text"><small><sup>{{ trans($basic->currency_symbol) }}</sup></small>{{ getAmount($data->profit) }}
+                                                        <small class="small-font">@lang('/')
+                                                            {{ trans($getTime->name) }}</small></span>
+                                                </p>
+                                            @endif
+
+                                            <div class="btn_area">
+                                                <button type="button"
+                                                    class="btn btn-success btn-block col-md-btn-sm investNow"
+                                                    data-price="{{ $data->price }}"
+                                                    data-resource="{{ $data }}">@lang('Start')</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
             </div>
+
+
         </div>
     </section>
 

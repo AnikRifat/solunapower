@@ -1,9 +1,9 @@
 
 // preloader_area
-var preloader = document.getElementById("preloader");
-function preloder_function(){
-    preloader.style.display= "none";
-}
+// var preloader = document.getElementById("preloader");
+// function preloder_function(){
+//     preloader.style.display= "none";
+// }
 
 const tabs = document.getElementsByClassName("tab");
 const contents = document.getElementsByClassName("content");

@@ -1,4 +1,4 @@
-@extends($theme.'layouts.app')
+@extends($theme.'layouts.user')
 @section('title',__('Reset Password'))
 
 

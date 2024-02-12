@@ -685,7 +685,7 @@ body::-webkit-scrollbar-thumb:hover {
     top: 0;
     left: 0;
     background-color: #ffffff;
-    display: flex;
+    display: none;
     justify-content: center;
     overflow: hidden;
     align-items: center;

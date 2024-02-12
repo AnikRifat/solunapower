@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset($themeTrue.'css/jquery-ui.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset($themeTrue.'css/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset($themeTrue.'css/style_dashboard.css')}}">
+
     <script src="{{asset($themeTrue.'js/modernizr.custom.js')}}"></script>
 
     @stack('style')
@@ -35,8 +36,8 @@
 <body  @if(session()->get('rtl') == 1) class="rtl" @endif onload="preloder_function()" class="">
 
     <!-- preloader_area_start -->
-    <div id="preloader">
-    </div>
+    {{-- <div id="preloader">
+    </div> --}}
     <!-- preloader_area_end -->
 
     <div class="dashboard-wrapper">
@@ -45,25 +46,82 @@
         <div id="content">
             <div class="overlay">
                 <!-- navbar -->
-                <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg position-relative ">
+
+                    <div class="d-flex flex-wrap justify-content-between text-white w-100">
                         <a class="navbar-brand" href="{{url('/')}}"> {{config('basic.site_title')}}</a>
                         <div class="wallet-wrapper">
-                            <div class="wallet-box d-none d-lg-block">
-                                <h4>@lang('Account Balance')</h4>
-                                <h5> @lang('Main Balance') <span>{{ $basic->currency_symbol }}{{ @$user->balance }}</span></h5>
-                                <h5 class="mb-0"> @lang('Interest Balance') <span>{{ $basic->currency_symbol }}{{ @$user->interest_balance }}</span></h5>
-                                <span class="tag">{{ $basic->currency }}</span>
+                            <div class="wallet-box d-none d-lg-block ">
+                                <h5>{{ $basic->currency_symbol }} @lang('Account Assest') <span>{{ @$user->balance }}</span></h5>
+
+                                <h3 class="mb-0"><span>{{round((@$user?->interest_balance > 0 ? @$user?->interest_balance : '0.00'),2) }}</span><small style="font-size: 20px" class="ml-3 tag">{{ $basic->currency }}</small></h3>
+
                             </div>
                         </div>
+
+                        <div class="top">
+                            <a class="" href="{{route('home')}}">
+                                <img src="{{getFile(config('location.logoIcon.path').'logo.png')}}"
+                                     alt="{{config('basic.site_title')}}">
+                            </a>
+                            <button
+                                class="sidebar-toggler d-md-none"
+                                onclick="toggleSideMenu()"
+                            >
+                                <i class="fal fa-times"></i>
+                            </button>
+                        </div>
+
                         <span class="navbar-text">
                         <!-- notification panel -->
                         @include($theme.'partials.pushNotify')
                          <!-- user panel -->
-                        @include($theme.'partials.userDropdown')
                      </span>
                     </div>
+
+                    <div class=" header-bottom ">
+<div class="d-flex flex-wrap justify-content-center text-center align-items-center">
+    <div>
+        <a href="{{route('user.addFund')}}">
+            <span><i class="fas fa-dollar-sign"></i></span>
+            <br>
+            <span> Deposit </span></a>
+
+    </div>
+    <div>
+        <a href="{{ route('user.payout.money') }}">
+        <span><i class="fas fa-sync"></i></span>
+        <br>
+        <span> Withdraw </span>
+    </a>
+    </div>
+    <div>
+        <a href="{{ route('faq') }}">
+        <span><i class="fas fa-file"></i></span>
+        <br>
+        <span> License </span>
+    </a>
+    </div>
+    <div>
+        <span><i class="fas fa-mobile"></i></span>
+        <br>
+        <span> App </span>
+    </div>
+    <div>
+        <a href="{{ route('user.ticket.list') }}">
+        <span><i class="fas fa-user"></i></span>
+        <br>
+        <span> Customer service </span>
+        </a>
+    </div>
+</div>
+                    </div>
                 </nav>
+
+                <div class="content-title text-center">
+<h4>Staking list</h4>
+<h6>Welcome to the Solunapower Platform ({{config('basic.site_title')}}).</h6>
+                </div>
                 @include($theme.'partials.marquee')
 
                 @yield('content')

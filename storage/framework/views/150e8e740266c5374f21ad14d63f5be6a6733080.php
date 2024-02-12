@@ -1,5 +1,6 @@
 
-    <div class="cg-widget">
+
+ <div class="cg-widget">
         <div class="cg-marquee">
             <marquee  class="cg-marquee-content">
                 <!-- Coin Items -->

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Teko:wght@500;600;700&display=swap");
 :root {
-  --primary: #ff007a;
+  --primary: #446e9b;
   --lightgreen: #c0f299;
   --gray: #777;
   --gray2: #e5e5e5;
@@ -55,7 +55,7 @@ h4,
 h5 {
   font-family: "Teko", sans-serif;
   font-weight: 800;
-  color: var(--darkblue);
+  color: var(--primary);
 }
 
 h1 {
@@ -791,13 +791,13 @@ i {
   transition: 0.4s;
   height: 100%;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
 }
 
 #sidebar ul li a i {
   /* width: 30px; */
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   position: relative;
   color: var(--darkblue);
   top: 2px;
@@ -820,12 +820,12 @@ i {
 }
 
 #sidebar ul li a.active, #sidebar ul li a:hover {
-  background: var(--primary);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary);
 }
 
 #sidebar ul li a.active i, #sidebar ul li a:hover i {
-  color: var(--white);
+  color: var(--primary);
 }
 
 #sidebar ul li a.active::before, #sidebar ul li a:hover::before {
@@ -862,9 +862,10 @@ i {
   /* width: calc(100% - 300px); */
   /* margin-left: auto; */
   min-height: 100vh;
-  background: #f1f2f6;
+  background: #ffffff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  margin-bottom: 13vh !important;
 }
 
 #content.active {
@@ -878,11 +879,11 @@ i {
 }
 
 #content .navbar {
-  background: var(--white);
-  padding: 10px;
+  background: var(--primary);
+  padding: 40px;
   /* height: 80px; */
-  margin: 15px 20px;
-  border-radius: 10px;
+  margin: 0px 0px 50px 0px;
+  border-radius: 0px 0px  50px 50px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
 }
@@ -915,9 +916,9 @@ i {
 }
 
 #content .navbar .navbar-text {
-  position: absolute;
+  /* position: absolute; */
   right: 15px;
-  padding: 0;
+  /* padding: 0; */
 }
 
 #content .navbar .navbar-text .profile {
@@ -1020,15 +1021,15 @@ i {
 }
 
 #content .navbar .navbar-text .notification-panel .dropdown-toggle i {
-  color: var(--primary);
+  color: var(--white);
   font-size: 24px;
   position: relative;
   top: 3px;
 }
 
 #content .navbar .navbar-text .notification-panel .dropdown-toggle .count {
-  background: var(--primary);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary);
   font-size: 12px;
   min-width: 20px;
   height: 20px;
@@ -3001,3 +3002,19 @@ i {
         border-bottom: 1px solid #6c757d;
         padding: 10px 0px 5px 0px;
     }
+    .wallet-wrapper h3,h5 {
+        color: var(--white);
+    }
+
+    .header-bottom {position: absolute;left: 0;right: 0;bottom: -20%;/* margin: 0px 94px; */padding: 0px;background: #fff;border-radius: 10px;padding: 10px;}
+.d-flex.flex-wrap.justify-content-center.text-center.align-items-center div {
+    width: 20%;
+}
+
+.header-bottom i {
+    color: #ffc107;
+    font-size: 30px;
+}
+.cmn_box.box1.shadow3 {
+    border-bottom: 1px solid #ddd;
+}

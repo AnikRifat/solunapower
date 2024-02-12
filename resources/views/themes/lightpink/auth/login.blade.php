@@ -1,4 +1,4 @@
-@extends($theme.'layouts.app')
+@extends($theme.'layouts.user')
 @section('title',__('Login'))
 
 @section('content')
@@ -7,14 +7,8 @@
     <section class="login_signup_area">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7 col-md-5">
-                    <div class="login_signup_banner">
-                        <div class="image_area animation1">
-                            <img src="{{ asset($themeTrue.'img/login/1.png') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-7">
+
+                <div class="col-lg-12">
                     <div class="login_signup_form p-4">
                         <div class="section_header text-center">
 
@@ -63,7 +57,7 @@
                                     <a href="{{ route('password.request') }}">@lang('Forgot password?')</a>
                                 </div>
                             </div>
-                            <button type="submit" class="btn custom_btn mt-30 w-100">@lang('Log In')</button>
+                            <button type="submit" class="btn btn-success mt-30 w-100">@lang('Log In')</button>
                             <div class="pt-5 d-flex">
                                 @lang("Don't have an account?")
                                 <br>
